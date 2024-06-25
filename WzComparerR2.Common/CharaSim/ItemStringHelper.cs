@@ -114,6 +114,7 @@ namespace WzComparerR2.CharaSim
                 case GearPropType.sharableOnce: return value == 0 ? null : "월드 내 나의 캐릭터 간 1회 이동 가능\n(이동 후 교환불가)";
                 case GearPropType.onlyEquip: return value == 0 ? null : "고유장착 아이템";
                 case GearPropType.notExtend: return value == 0 ? null : "유효기간 연장 불가";
+                case GearPropType.accountSharableAfterExchange: return value == 0 ? null : "1회 교환가능\n(거래 후 월드 내 나의 캐릭터 간 이동만 가능)";
                 case GearPropType.tradeAvailable:
                     switch (value)
                     {
@@ -573,6 +574,8 @@ namespace WzComparerR2.CharaSim
                     return GetGearPropString(GearPropType.accountSharable, value);
                 case ItemPropType.sharableOnce:
                     return GetGearPropString(GearPropType.sharableOnce, value);
+                case ItemPropType.accountSharableAfterExchange:
+                    return GetGearPropString(GearPropType.accountSharableAfterExchange, value);
                 case ItemPropType.exchangeableOnce:
                     return value == 0 ? null : "1회 교환가능 (사용 또는 거래 후 교환불가)";
                 case ItemPropType.quest:
