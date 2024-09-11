@@ -82,7 +82,7 @@ namespace WzComparerR2.Comparer
 
         public void EasyCompareWzFiles(Wz_File fileNew, Wz_File fileOld, string outputDir, StreamWriter index = null)
         {
-            StateInfo = "Wz 비교중...";
+            StateInfo = "WZ 비교중...";
            
             if ((fileNew.Type == Wz_Type.Base || fileOld.Type == Wz_Type.Base) && index == null) //至少有一个base 拆分对比
             {
@@ -344,7 +344,7 @@ namespace WzComparerR2.Comparer
             {
                 Directory.CreateDirectory(srcDirPath);
             }
-            string skillTooltipPath = Path.Combine(outputDir, "스킬 툴팁");
+            string skillTooltipPath = Path.Combine(outputDir, "SkillTooltip_files");
 
             FileStream htmlFile = null;
             StreamWriter sw = null;
@@ -376,7 +376,7 @@ namespace WzComparerR2.Comparer
                     string.Join("<br/>", fileOld.SelectMany(wzf => GetFileInfo(wzf, ewzf => ewzf.Header.FileSize.ToString("N0")))),
                     string.Join("<br/>", fileOld.Select(wzf => wzf.GetMergedVersion()))
                     );
-                sw.WriteLine("<tr><td>현재시각</td><td colspan='3'>{0:yyyy-MM-dd HH:mm:ss.fff}</td></tr>", DateTime.Now);
+                sw.WriteLine("<tr><td>현재 시각</td><td colspan='3'>{0:yyyy-MM-dd HH:mm:ss.fff}</td></tr>", DateTime.Now);
                 sw.WriteLine("<tr><td>옵션</td><td colspan='3'>{0}</td></tr>", string.Join("<br/>", new[] {
                     this.OutputPng ? "-OutputPng" : null,
                     this.OutputAddedImg ? "-OutputAddedImg" : null,
@@ -614,7 +614,7 @@ namespace WzComparerR2.Comparer
                     {
                         g.DrawImage(skillImageNewOld[0], skillImageNewOld[1].Width, 0);
                         skillImageNewOld[0].Dispose();
-                        skillType = "변경";
+                        skillType = "기존";
                     }
                     g.DrawImage(skillImageNewOld[1], 0, 0);
                     skillImageNewOld[1].Dispose();

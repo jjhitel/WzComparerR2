@@ -748,7 +748,7 @@ namespace WzComparerR2
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
-                dlg.Title = "Wz 열기";
+                dlg.Title = "WZ 열기";
                 dlg.Filter = "Base.wz|*.wz";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -765,7 +765,7 @@ namespace WzComparerR2
                 {
                     if (string.Compare(wz_f.Header.FileName, wzFilePath, true) == 0)
                     {
-                        MessageBoxEx.Show("이미 열려있는 wz 파일입니다.", "오류");
+                        MessageBoxEx.Show("이미 열려있는 WZ 파일입니다.", "오류");
                         return;
                     }
                 }
@@ -803,7 +803,7 @@ namespace WzComparerR2
                 this.openedWz.Add(wz);
                 OnWzOpened(new WzStructureEventArgs(wz)); //触发事件
                 QueryPerformance.End();
-                labelItemStatus.Text = "Wz 열기 완료: 소요 시간 " + (Math.Round(QueryPerformance.GetLastInterval(), 4) * 1000) + "ms, " + wz.img_number + "개의 img";
+                labelItemStatus.Text = "WZ 열기 완료: 소요 시간 " + (Math.Round(QueryPerformance.GetLastInterval(), 4) * 1000) + "ms, " + wz.img_number + "개의 img";
 
                 ConfigManager.Reload();
                 WcR2Config.Default.RecentDocuments.Remove(wzFilePath);
@@ -830,7 +830,7 @@ namespace WzComparerR2
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
-                dlg.Title = "Img 열기...";
+                dlg.Title = "IMG 열기...";
                 dlg.Filter = "*.img|*.img|*.wz|*.wz";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -847,7 +847,7 @@ namespace WzComparerR2
                 {
                     if (StringComparer.OrdinalIgnoreCase.Equals(wz_f.Header.FileName, imgFileName))
                     {
-                        MessageBoxEx.Show("이미 열려있는 wz 파일입니다.", "오류");
+                        MessageBoxEx.Show("이미 열려있는 WZ 파일입니다.", "오류");
                         return;
                     }
                 }
@@ -866,7 +866,7 @@ namespace WzComparerR2
                 this.openedWz.Add(wz);
                 OnWzOpened(new WzStructureEventArgs(wz)); //触发事件
                 sw.Stop();
-                labelItemStatus.Text = $"Img 열기 완료: 소요 시간 {sw.ElapsedMilliseconds}ms";
+                labelItemStatus.Text = $"IMG 열기 완료: 소요 시간 {sw.ElapsedMilliseconds}ms";
                 refreshRecentDocItems();
             }
             catch (FileNotFoundException)
@@ -888,7 +888,7 @@ namespace WzComparerR2
         {
             if (advTree1.SelectedNode == null)
             {
-                MessageBoxEx.Show("닫을 wz 파일이 없습니다.", "오류");
+                MessageBoxEx.Show("닫을 WZ 파일이 없습니다.", "오류");
                 return;
             }
             Node baseWzNode = advTree1.SelectedNode;
@@ -904,7 +904,7 @@ namespace WzComparerR2
             Wz_File wz_f = advTree1.SelectedNode.AsWzNode()?.GetNodeWzFile();
             if (wz_f == null)
             {
-                MessageBoxEx.Show("올바른 wz 파일을 선택하세요.", "오류");
+                MessageBoxEx.Show("올바른 WZ 파일을 선택하세요.", "오류");
                 return;
             }
             Wz_Structure wz = wz_f.WzStructure;
@@ -931,9 +931,9 @@ namespace WzComparerR2
             OnWzClosing(new WzStructureEventArgs(wz));
             wz.Clear();
             if (this.openedWz.Remove(wz))
-                labelItemStatus.Text = "Wz 닫기 완료";
+                labelItemStatus.Text = "WZ 닫기 완료";
             else
-                labelItemStatus.Text = "Wz 닫기 실패: 알 수 없는 오류 발생";
+                labelItemStatus.Text = "WZ 닫기 실패: 알 수 없는 오류 발생";
         }
 
         private void buttonItemCloseAll_Click(object sender, EventArgs e)
@@ -1043,7 +1043,7 @@ namespace WzComparerR2
                 listViewExWzDetail.Items.Add(new ListViewItem(new string[] { "File Size", wzFile.Header.FileSize + " bytes" }));
                 listViewExWzDetail.Items.Add(new ListViewItem(new string[] { "Copyright", wzFile.Header.Copyright }));
                 listViewExWzDetail.Items.Add(new ListViewItem(new string[] { "Version", wzFile.GetMergedVersion().ToString() }));
-                listViewExWzDetail.Items.Add(new ListViewItem(new string[] { "Wz Type", wzFile.IsSubDir ? "SubDir" : wzFile.Type.ToString() }));
+                listViewExWzDetail.Items.Add(new ListViewItem(new string[] { "WZ Type", wzFile.IsSubDir ? "SubDir" : wzFile.Type.ToString() }));
 
                 foreach (Wz_File subFile in wzFile.MergedWzFiles)
                 {
@@ -1786,7 +1786,7 @@ namespace WzComparerR2
             }
             else
             {
-                labelItemStatus.Text = "정렬 실패: 열린 wz 파일이 없음";
+                labelItemStatus.Text = "정렬 실패: 열린 WZ 파일이 없음";
             }
         }
 
@@ -2777,7 +2777,7 @@ namespace WzComparerR2
             Wz_File wzf = selectedNode.GetNodeWzFile();
             if (wzf == null)
             {
-                labelItemStatus.Text = "Wz 파일의 노드를 불러올 수 없습니다.";
+                labelItemStatus.Text = "WZ 파일의 노드를 불러올 수 없습니다.";
                 return;
             }
 
@@ -3215,7 +3215,7 @@ namespace WzComparerR2
 
             if (openedWz.Count < 2)
             {
-                MessageBoxEx.Show("비교할 두 개 이상의 Wz 파일을 선택하세요.", "오류");
+                MessageBoxEx.Show("비교할 두 개 이상의 WZ 파일을 선택하세요.", "오류");
                 return;
             }
 
@@ -3245,13 +3245,13 @@ namespace WzComparerR2
 
                         while (true)
                         {
-                            string txt = string.Format("Wz 파일 :\r\n\r\n  신버전 : {0} (V{1})\r\n  구버전 : {2} (V{3})\r\n\r\nYes를 누르시면 비교가 시작되고, No를 누르시면 신버전과 구버전을 뒤집을 수 있습니다.",
+                            string txt = string.Format("WZ 파일 :\r\n\r\n  신버전 : {0} (V{1})\r\n  구버전 : {2} (V{3})\r\n\r\nYes를 누르면 비교가 시작되고, No를 누르면 신버전과 구버전을 뒤집을 수 있습니다.",
                                 fileNew.Header.FileName,
                                 fileNew.GetMergedVersion(),
                                 fileOld.Header.FileName,
                                 fileOld.GetMergedVersion()
                                 );
-                            switch (MessageBoxEx.Show(txt, "Wz 비교", MessageBoxButtons.YesNoCancel))
+                            switch (MessageBoxEx.Show(txt, "WZ 비교", MessageBoxButtons.YesNoCancel))
                             {
                                 case DialogResult.Yes:
                                     comparer.EasyCompareWzFiles(fileNew, fileOld, dlg.SelectedPath);
@@ -3282,7 +3282,7 @@ namespace WzComparerR2
                     {
                         sw.Stop();
                         compareThread = null;
-                        labelXComp1.Text = "Wz 비교 완료: 소요 시간 " + sw.Elapsed.ToString();
+                        labelXComp1.Text = "WZ 비교 완료: 소요 시간 " + sw.Elapsed.ToString();
                         labelXComp2.Text = "";
                     }
                 });

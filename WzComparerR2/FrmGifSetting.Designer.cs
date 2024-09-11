@@ -468,11 +468,11 @@
             // 
             // comboItem4
             // 
-            this.comboItem4.Text = "Img 경로";
+            this.comboItem4.Text = "IMG 경로";
             // 
             // comboItem5
             // 
-            this.comboItem5.Text = "Wz 경로";
+            this.comboItem5.Text = "WZ 경로";
             // 
             // checkBoxX3
             // 
